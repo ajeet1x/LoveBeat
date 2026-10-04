@@ -1,0 +1,936 @@
+
+:root{
+  --plum:#3b1030;
+  --rose:#e8456b;
+  --blush:#ffe3ea;
+  --peach:#ffb48a;
+  --cream:#fff8f5;
+  --ink:#2a0d22;
+  --ease:cubic-bezier(.22,1,.36,1);
+}
+
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  font-family:'Bricolage Grotesque',system-ui,sans-serif;
+
+  background:linear-gradient(
+    180deg,
+    #fff1f5 0%,
+    #ffe7ef 16%,
+    #fff0e8 32%,
+    #f7eaff 50%,
+    #e8f4ff 68%,
+    #fff0f5 84%,
+    #ffe4ed 100%
+  );
+
+  color:var(--ink);
+  line-height:1.6;
+  overflow-x:hidden;
+}
+
+a{
+  color:inherit;
+  text-decoration:none;
+}
+
+.wrap{
+  max-width:1040px;
+  margin:0 auto;
+  padding:0 20px;
+}
+
+
+/* =========================
+   NAVBAR
+========================= */
+
+nav{
+
+  top:0;
+
+  background:rgba(255,248,245,.72);
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+}
+
+nav .wrap{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  height:64px;
+}
+
+.logo{
+  font-weight:800;
+  font-size:22px;
+  color:var(--plum);
+}
+
+.logo span{
+  color:var(--rose);
+}
+
+nav ul{
+  display:flex;
+  gap:26px;
+  list-style:none;
+  font-size:15px;
+}
+
+nav ul a{
+  transition:color .3s var(--ease);
+}
+
+nav ul a:hover{
+  color:var(--rose);
+}
+
+
+/* =========================
+   BUTTONS
+========================= */
+
+.btn{
+  position:relative;
+  overflow:hidden;
+
+  display:inline-block;
+
+  padding:12px 26px;
+
+  border-radius:999px;
+
+  font:600 16px inherit;
+  font-family:inherit;
+
+  border:0;
+  cursor:pointer;
+
+  background:var(--rose);
+  color:#fff;
+
+  transition:
+    transform .35s var(--ease),
+    box-shadow .35s var(--ease);
+}
+
+.btn:hover{
+  transform:translateY(-3px);
+  box-shadow:0 10px 24px rgba(232,69,107,.35);
+}
+
+.btn:active{
+  transform:scale(.96);
+}
+
+.btn.ghost{
+  background:transparent;
+  color:var(--plum);
+
+  box-shadow:
+    inset 0 0 0 2px var(--plum);
+}
+
+.btn.ghost:hover{
+  box-shadow:
+    inset 0 0 0 2px var(--plum),
+    0 10px 24px rgba(59,16,48,.15);
+}
+
+.ripple{
+  position:absolute;
+
+  border-radius:50%;
+
+  background:rgba(255,255,255,.55);
+
+  transform:scale(0);
+
+  animation:
+    rip .7s var(--ease) forwards;
+
+  pointer-events:none;
+}
+
+@keyframes rip{
+  to{
+    transform:scale(4);
+    opacity:0;
+  }
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.hero{
+  padding:56px 0 72px;
+}
+
+.hero .wrap{
+  display:grid;
+
+  grid-template-columns:
+    1.1fr .9fr;
+
+  gap:40px;
+
+  align-items:center;
+}
+
+h1{
+  font-size:
+    clamp(34px,5vw,54px);
+
+  line-height:1.1;
+
+  font-weight:800;
+
+  color:var(--plum);
+
+  letter-spacing:-.02em;
+}
+
+.hero p{
+  margin:18px 0 28px;
+
+  font-size:18px;
+
+  max-width:440px;
+
+  color:#5a3550;
+}
+
+.hero .btns{
+  display:flex;
+
+  gap:12px;
+
+  flex-wrap:wrap;
+}
+
+.hero .intro{
+  animation:
+    rise 1s var(--ease) both;
+}
+
+@keyframes rise{
+  from{
+    opacity:0;
+    transform:translateY(24px);
+  }
+}
+
+
+/* =========================
+   PHONE
+========================= */
+
+.phone{
+  width:270px;
+
+  margin:0 auto;
+
+  border-radius:36px;
+
+  padding:14px;
+
+  background:var(--plum);
+
+  box-shadow:
+    0 30px 60px rgba(59,16,48,.3);
+
+  animation:
+    float 5s ease-in-out infinite;
+}
+
+@keyframes float{
+  50%{
+    transform:
+      translateY(-12px)
+      rotate(1deg);
+  }
+}
+
+.screen{
+  border-radius:26px;
+
+  background:
+    linear-gradient(
+      170deg,
+      var(--blush),
+      var(--peach)
+    );
+
+  padding:26px 18px;
+
+  text-align:center;
+}
+
+.avatar{
+  width:86px;
+  height:86px;
+
+  margin:0 auto 12px;
+
+  border-radius:50%;
+
+  background:var(--rose);
+
+  display:grid;
+  place-items:center;
+
+  font-size:38px;
+
+  color:#fff;
+
+  position:relative;
+}
+
+.avatar::after{
+  content:"";
+
+  position:absolute;
+
+  inset:-8px;
+
+  border-radius:50%;
+
+  border:2px solid var(--rose);
+
+  animation:
+    pulse 1.8s ease-out infinite;
+}
+
+@keyframes pulse{
+  from{
+    transform:scale(.9);
+    opacity:.9;
+  }
+
+  to{
+    transform:scale(1.35);
+    opacity:0;
+  }
+}
+
+.screen b{
+  display:block;
+
+  font-size:19px;
+
+  color:var(--plum);
+}
+
+.screen small{
+  color:#7a4a68;
+}
+
+.actions{
+  display:flex;
+
+  justify-content:center;
+
+  gap:18px;
+
+  margin-top:22px;
+}
+
+.dot{
+  width:50px;
+  height:50px;
+
+  border-radius:50%;
+
+  display:grid;
+  place-items:center;
+
+  color:#fff;
+
+  font-size:20px;
+
+  cursor:pointer;
+
+  transition:
+    transform .35s var(--ease);
+}
+
+.dot:hover{
+  transform:scale(1.12);
+}
+
+.dot.no{
+  background:#8a5a78;
+}
+
+.dot.yes{
+  background:#2fb36b;
+}
+
+
+/* =========================
+   COMMON SECTIONS
+========================= */
+
+section{
+  padding:64px 0;
+
+  /* No background here.
+     Body ka continuous background visible rahega. */
+}
+
+h2{
+  font-size:
+    clamp(26px,3.6vw,36px);
+
+  color:var(--plum);
+
+  font-weight:800;
+
+  letter-spacing:-.01em;
+
+  margin-bottom:10px;
+}
+
+.sub{
+  color:#5a3550;
+
+  max-width:480px;
+
+  margin-bottom:34px;
+}
+
+
+/* =========================
+   STEPS
+========================= */
+
+.steps{
+  display:grid;
+
+  grid-template-columns:
+    repeat(3,1fr);
+
+  gap:22px;
+}
+
+.card{
+  background:
+    rgba(255,255,255,.72);
+
+  border-radius:22px;
+
+  padding:26px;
+
+  box-shadow:
+    0 8px 28px rgba(59,16,48,.08);
+
+  transition:
+    transform .5s var(--ease),
+    box-shadow .5s var(--ease);
+
+  backdrop-filter:
+    blur(4px);
+}
+
+.card:hover{
+  transform:translateY(-8px);
+
+  box-shadow:
+    0 18px 40px rgba(232,69,107,.18);
+}
+
+.card .n{
+  width:38px;
+  height:38px;
+
+  border-radius:50%;
+
+  background:var(--blush);
+
+  color:var(--rose);
+
+  font-weight:800;
+
+  display:grid;
+  place-items:center;
+
+  margin-bottom:14px;
+}
+
+.card h3{
+  font-size:19px;
+
+  margin-bottom:6px;
+
+  color:var(--plum);
+}
+
+.card p{
+  font-size:15px;
+
+  color:#5a3550;
+}
+
+
+/* =========================
+   SAFETY
+========================= */
+
+.safe{
+  background:var(--plum);
+
+  color:#fff;
+
+  border-radius:28px;
+
+  padding:44px 36px;
+
+  display:grid;
+
+  grid-template-columns:
+    1fr 1fr;
+
+  gap:30px;
+
+  align-items:center;
+}
+
+.safe h2{
+  color:#fff;
+}
+
+.safe p{
+  color:#e9cfe0;
+}
+
+.safe ul{
+  list-style:none;
+
+  display:grid;
+
+  gap:12px;
+}
+
+.safe li{
+  background:
+    rgba(255,255,255,.08);
+
+  padding:14px 18px;
+
+  border-radius:16px;
+
+  transition:
+    transform .4s var(--ease),
+    background .4s;
+}
+
+.safe li:hover{
+  transform:translateX(8px);
+
+  background:
+    rgba(255,255,255,.14);
+}
+
+
+/* =========================
+   CTA
+========================= */
+
+.cta{
+  text-align:center;
+}
+
+.cta .sub{
+  margin-inline:auto;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+  padding:28px 0;
+
+  text-align:center;
+
+  font-size:14px;
+
+  color:#7a4a68;
+}
+
+
+/* =========================
+   BOY + GIRL SCENE
+========================= */
+
+.scene-sec{
+  padding:40px 0 56px;
+
+  text-align:center;
+}
+
+.scene{
+  display:block;
+
+  width:100%;
+
+  max-width:640px;
+
+  margin:10px auto 0;
+
+  cursor:pointer;
+
+  -webkit-tap-highlight-color:
+    transparent;
+}
+
+.hint{
+  font-size:14px;
+
+  color:#7a4a68;
+
+  margin-top:6px;
+}
+
+.scene *{
+  transform-box:fill-box;
+}
+
+.leg,
+.arm{
+  transform-origin:50% 0;
+}
+
+
+/* Boy LEFT -> RIGHT */
+
+.scene.play .boy{
+  animation:
+    run 3.15s linear forwards;
+}
+
+.scene.play .bob{
+  animation:
+    bob .175s ease-in-out 18 alternate;
+}
+
+.scene.play .b-legl{
+  animation:
+    swing .35s ease-in-out 9 alternate;
+}
+
+.scene.play .b-legr{
+  animation:
+    swing .35s ease-in-out 9 alternate-reverse;
+}
+
+.scene.play .b-arml{
+  animation:
+    swing .35s ease-in-out 9 alternate-reverse,
+    hugb .6s var(--ease) 3.2s forwards;
+}
+
+.scene.play .b-armr{
+  animation:
+    swing .35s ease-in-out 9 alternate,
+    hugb .6s var(--ease) 3.2s forwards;
+}
+
+
+/* Girl RIGHT -> LEFT */
+
+.scene.play .girl{
+  animation:
+    runl 3.15s linear forwards;
+}
+
+.scene.play .g-legl{
+  animation:
+    swing .35s ease-in-out 9 alternate;
+}
+
+.scene.play .g-legr{
+  animation:
+    swing .35s ease-in-out 9 alternate-reverse;
+}
+
+.scene.play .g-arm{
+  animation:
+    swing .35s ease-in-out 9 alternate,
+    hugg .6s var(--ease) 3.2s forwards;
+}
+
+
+/* Couple */
+
+.scene.play .pair{
+  animation:
+    sway 1.2s ease-in-out 3.8s 2;
+}
+
+
+/* Heart */
+
+.scene.play .love{
+  animation:
+    lovepop 1.6s var(--ease) 3.6s forwards;
+}
+
+.love{
+  opacity:0;
+
+  transform-origin:
+    50% 100%;
+}
+
+
+/* =========================
+   ANIMATIONS
+========================= */
+
+@keyframes run{
+  to{
+    transform:
+      translateX(245px);
+  }
+}
+
+@keyframes runl{
+  to{
+    transform:
+      translateX(-240px);
+  }
+}
+
+@keyframes bob{
+  to{
+    transform:
+      translateY(-5px);
+  }
+}
+
+@keyframes swing{
+  from{
+    transform:
+      rotate(-38deg);
+  }
+
+  to{
+    transform:
+      rotate(38deg);
+  }
+}
+
+@keyframes hugb{
+  to{
+    transform:
+      rotate(-105deg);
+  }
+}
+
+@keyframes hugg{
+  to{
+    transform:
+      rotate(105deg);
+  }
+}
+
+@keyframes sway{
+  50%{
+    transform:
+      translateX(-4px)
+      rotate(-1.5deg);
+  }
+}
+
+@keyframes lovepop{
+
+  0%{
+    opacity:0;
+
+    transform:
+      scale(.2);
+  }
+
+  30%{
+    opacity:1;
+
+    transform:
+      scale(1.2);
+  }
+
+  100%{
+    opacity:0;
+
+    transform:
+      translateY(-46px)
+      scale(1);
+  }
+}
+
+
+/* =========================
+   REVEAL ON SCROLL
+========================= */
+
+.reveal{
+  opacity:0;
+
+  transform:
+    translateY(30px);
+
+  transition:
+    opacity .9s var(--ease),
+    transform .9s var(--ease);
+}
+
+.reveal.show{
+  opacity:1;
+
+  transform:none;
+}
+
+
+/* =========================
+   FLOATING HEARTS
+========================= */
+
+.heart{
+  position:fixed;
+
+  bottom:-30px;
+
+  z-index:50;
+
+  pointer-events:none;
+
+  color:var(--rose);
+
+  will-change:
+    transform,
+    opacity;
+
+  animation:
+    up linear forwards;
+}
+
+@keyframes up{
+  to{
+    transform:
+      translate(var(--dx),-105vh)
+      rotate(var(--r));
+
+    opacity:0;
+  }
+}
+
+
+/* =========================
+   CLICK HEART BURST
+========================= */
+
+.burst{
+  position:fixed;
+
+  z-index:60;
+
+  pointer-events:none;
+
+  color:var(--rose);
+
+  animation:
+    pop .9s var(--ease) forwards;
+}
+
+@keyframes pop{
+  to{
+    transform:
+      translate(var(--bx),var(--by))
+      scale(.4);
+
+    opacity:0;
+  }
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:800px){
+
+  nav ul{
+    display:none;
+  }
+
+  .hero .wrap,
+  .steps,
+  .safe{
+    grid-template-columns:1fr;
+  }
+
+  .hero{
+    padding-top:32px;
+  }
+}
+
+
+/* =========================
+   REDUCED MOTION
+========================= */
+
+@media(prefers-reduced-motion:reduce){
+
+  *{
+    animation:none!important;
+    transition:none!important;
+  }
+
+  .scene .boy{
+    transform:
+      translateX(245px);
+  }
+
+  .scene .girl{
+    transform:
+      translateX(-240px);
+  }
+
+  .scene .b-arml,
+  .scene .b-armr{
+    transform:
+      rotate(-105deg);
+  }
+
+  .scene .g-arm{
+    transform:
+      rotate(105deg);
+  }
+
+  html{
+    scroll-behavior:auto;
+  }
+
+  .reveal{
+    opacity:1;
+    transform:none;
+  }
+
+  .heart,
+  .burst{
+    display:none;
+  }
+}
